@@ -1,19 +1,62 @@
 let humanScore = 0;
 let computerScore = 0;
 
-const rockButt = document.getElementById("rock-butt");
-const paperButt = document.getElementById("paper-butt");
-const scissorsButt = document.getElementById("scissors-butt");
+const rockButt = document.getElementById("rockButt");
+const paperButt = document.getElementById("paperButt");
+const scissorsButt = document.getElementById("scissorsButt");
+const restartButt = document.getElementById("restart");
+let resultMessageContainer = document.querySelector(".results");
+let computerScoreContainer = document.querySelector(".computer-score");
+let humanScoreContainer = document.querySelector(".player-score");
 
-rockButt.addEventListener("click", playgame(rock));
-paperButt.addEventListener("click", playgame(paper));
-scissorsButt.addEventListener("click", playGame(scissors));
+restartButt.addEventListener("click", () => {
+    humanScore = 0;
+    computerScore = 0;
+    resultMessageContainer.textContent = "New Game";
+    humanScoreContainer.textContent = "Human Score: " + humanScore;
+    computerScoreContainer.textContent = "Computer Score: " + computerScore;
+})
+
+rockButt.addEventListener("click", () => {
+    if (computerScore < 5 && humanScore < 5) {
+        playGame("rock");
+    }
+    if (computerScore === 5) {
+        resultMessageContainer.textContent = "Computer Score is 5. Computer wins.";
+    }
+    if (humanScore === 5) {
+        resultMessageContainer.textContent = "Human Score is 5. Human wins.";
+    }
+});
+paperButt.addEventListener("click", () => {
+    if (computerScore < 5 && humanScore < 5) {
+        playGame("paper");
+    }
+    if (computerScore === 5) {
+        resultMessageContainer.textContent = "Computer Score is 5. Computer wins.";
+    }
+    if (humanScore === 5) {
+        resultMessageContainer.textContent = "Human Score is 5. Human wins.";
+    }
+});
+scissorsButt.addEventListener("click", () => {
+    if (computerScore < 5 && humanScore < 5) {
+        playGame("scissors");
+    }
+    if (computerScore === 5) {
+        resultMessageContainer.textContent = "Computer Score is 5. Computer wins.";
+    }
+    if (humanScore === 5) {
+        resultMessageContainer.textContent = "Human Score is 5. Human wins.";
+    }
+});
 
 function playGame(humanSelection) {
     const computerSelection = getComputerChoice();
-    console.log(playRound(humanSelection, computerSelection));
-    console.log("Human Score: " + humanScore);
-    console.log("Computer Score: " + computerScore);
+    const resultMessage = playRound(humanSelection, computerSelection);
+    resultMessageContainer.textContent = resultMessage;
+    computerScoreContainer.textContent = "Computer Score: " + computerScore;
+    humanScoreContainer.textContent = "Human Score: " + humanScore;
 }
 
 function getComputerChoice() {
@@ -85,10 +128,7 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-
-playGame();
-
-
+s
 
 
 
